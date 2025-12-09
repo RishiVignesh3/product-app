@@ -1,6 +1,6 @@
 import type { LoginRequest, RegisterRequest, AuthResponse, RefreshTokenRequest } from '../types/auth'
 
-const API_BASE_URL = 'http://localhost:8080/api/v1/auth'
+const API_BASE_URL = 'https://product-yjjp.onrender.com/api/v1/auth'
 
 const TOKEN_KEY = 'accessToken'
 const REFRESH_TOKEN_KEY = 'refreshToken'
