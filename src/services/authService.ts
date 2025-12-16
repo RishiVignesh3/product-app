@@ -1,6 +1,6 @@
 import type { LoginRequest, RegisterRequest, AuthResponse, RefreshTokenRequest } from '../types/auth'
 
-const API_BASE_URL = 'https://product-yjjp.onrender.com/api/v1/auth'
+const API_BASE_URL = 'http://localhost:8080/api/v1/auth'
 
 const TOKEN_KEY = 'accessToken'
 const REFRESH_TOKEN_KEY = 'refreshToken'
@@ -102,7 +102,7 @@ class AuthService {
     localStorage.setItem(REFRESH_TOKEN_KEY, data.refreshToken)
     localStorage.setItem(
       USER_KEY,
-      JSON.stringify({ username: data.username, role: data.role })
+      JSON.stringify({ username: data.username, role: data.role, id: data.userId })
     )
   }
 
@@ -120,7 +120,7 @@ class AuthService {
     return localStorage.getItem(REFRESH_TOKEN_KEY)
   }
 
-  getUser(): { username: string; role: 'USER' | 'ADMIN' } | null {
+  getUser(): { username: string; role: 'USER' | 'ADMIN', id: string } | null {
     const user = localStorage.getItem(USER_KEY)
     return user ? JSON.parse(user) : null
   }

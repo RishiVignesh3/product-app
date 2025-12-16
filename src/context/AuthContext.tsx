@@ -28,12 +28,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = useCallback(async (credentials: LoginRequest) => {
     const response = await authService.login(credentials)
-    setUser({ username: response.username, role: response.role })
+    setUser({ username: response.username, role: response.role, id: response.userId })
   }, [])
 
   const register = useCallback(async (data: RegisterRequest) => {
     const response = await authService.register(data)
-    setUser({ username: response.username, role: response.role })
+    setUser({ username: response.username, role: response.role, id: response.userId })
   }, [])
 
   const logout = useCallback(async () => {

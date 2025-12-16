@@ -1,6 +1,6 @@
 import { authService } from './authService'
 
-const API_BASE_URL = 'https://product-yjjp.onrender.com/api/v1'
+const API_BASE_URL = 'http://localhost:8080/api/v1'
 
 interface RequestOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
@@ -67,7 +67,13 @@ class ApiService {
       return {} as T
     }
 
-    return JSON.parse(text)
+    // Try to parse as JSON, fall back to text if it fails
+    try {
+      return JSON.parse(text)
+    } catch {
+      // Response is not JSON, return the text as-is
+      return text as T
+    }
   }
 
   async get<T>(endpoint: string, headers?: Record<string, string>): Promise<T> {

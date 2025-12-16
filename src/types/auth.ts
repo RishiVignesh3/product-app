@@ -19,10 +19,12 @@ export interface AuthResponse {
   tokenType: string
   username: string
   role: 'USER' | 'ADMIN'
+  userId: string
 }
 
 export interface User {
   username: string
   role: 'USER' | 'ADMIN'
+  id: string
 }
 
